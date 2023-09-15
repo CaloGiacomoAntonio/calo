@@ -30,6 +30,7 @@ public class GiocoMain {
         while (partite > 0) {
             if (mazzo.getQuantitaCarte()<5){
                 mazzo = new MazzoCarta(desc, 10);
+                System.out.println("il mazzo è stato rimischiato \n \n");
             }
             mazziere =new Mazziere();
             player = new Giocatore[nomi.length];
