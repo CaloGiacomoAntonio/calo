@@ -28,7 +28,7 @@ public class GiocoMain {
         System.out.println("Quante partite si vogliono giocare: ");
         partite = Integer.parseInt(scanner.nextLine());
         while (partite > 0) {
-            if (mazzo.getQuantitaCarte()<5){
+            if (mazzo.getQuantitaCarte()<10){
                 mazzo = new MazzoCarta(desc, 10);
                 System.out.println("il mazzo è stato rimischiato \n \n");
             }
