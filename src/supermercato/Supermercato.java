@@ -2,14 +2,68 @@ package supermercato;
 
 public class Supermercato {
     private Prodotto[] prodotti;
+    private String nome;
+    private String indirizzo;
     
-    public Supermercato (Prodotto[] prodotti){
+    public Supermercato (Prodotto[] prodotti, String nome, String indirizzo){
         Prodotto[] copiaProdotti = new Prodotto[prodotti.length];
         for (int i = 0; i<prodotti.length; i++){
             copiaProdotti[i]=prodotti[i];
         }
         this.prodotti = copiaProdotti;
+        this.nome = nome;
+        this.indirizzo= indirizzo;
     }
+    
+    public String getNome(){
+        return nome;
+    }
+    
+    public String getProdotti(){
+        String s = "";
+        for (int i = 0; i<prodotti.length; i++){
+            s += " il prodotto in posizione "+ i + " e' "+prodotti[i].getDesc()+"\n";
+        }
+        return s;
+    }
+    
+    public void addProdotto(Prodotto prodotto){
+        Prodotto[] copiaProdotti = new Prodotto[prodotti.length+1];
+        for (int i = 0; i<copiaProdotti.length; i++){
+            if (i<prodotti.length){
+                copiaProdotti[i]=prodotti[i];
+            }else{
+                copiaProdotti[i]=prodotto;
+            }
+        }
+        prodotti=copiaProdotti;
+    }
+    
+    public void addProdotto2(double prezzo, double iva, double peso, double tara, String descrizione, String codiceBarre){
+        Prodotto[] copiaProdotti = new Prodotto[prodotti.length+1];
+        Prodotto prod = new Prodotto( prezzo, iva, peso, tara, descrizione, codiceBarre);
+        for (int i = 0; i<copiaProdotti.length; i++){
+            if (i<prodotti.length){
+                copiaProdotti[i]=prodotti[i];
+            }else{
+                copiaProdotti[i]=prod;
+            }
+        }
+        prodotti=copiaProdotti;
+    }
+    
+    public void removeProdotto1(int pos){
+        Prodotto[] copiaProdotti = new Prodotto[prodotti.length-1];
+        for (int i = 0; i<copiaProdotti.length; i++){
+            if (i >= pos){
+                copiaProdotti[i] = prodotti[i+1];
+            }else{
+                copiaProdotti[i] = prodotti[i];
+            }
+        }
+        prodotti=copiaProdotti;
+    }
+    
     
     public String prezzoAlto (){
         double max =0;
